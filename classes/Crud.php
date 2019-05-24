@@ -1,7 +1,7 @@
 <?php
-include_once 'Config.php';
+include_once 'config.php';
 
-class Crud extends Config
+class Crud extends config
 {
 	public function __construct()
 	{
@@ -10,7 +10,7 @@ class Crud extends Config
 	
 	public function getData($query)
 	{		
-		$result = $this->connection->query($query);
+		$result = $this->conn->query($query);
 		
 		if ($result == false) {
 			return false;
@@ -27,7 +27,7 @@ class Crud extends Config
 		
 	public function execute($query) 
 	{
-		$result = $this->connection->query($query);
+		$result = $this->conn->query($query);
 		
 		if ($result == false) {
 			echo 'Error: cannot execute the command';
@@ -41,7 +41,7 @@ class Crud extends Config
 	{ 
 		$query = "DELETE FROM $table WHERE id = $id";
 		
-		$result = $this->connection->query($query);
+		$result = $this->conn->query($query);
 	
 		if ($result == false) {
 			echo 'Error: cannot delete id ' . $id . ' from table ' . $table;
@@ -53,7 +53,7 @@ class Crud extends Config
 	
 	public function escape_string($value)
 	{
-		return $this->connection->real_escape_string($value);
+		return $this->conn->real_escape_string($value);
 	}
 }
 ?>
